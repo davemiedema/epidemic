@@ -10,10 +10,9 @@ clock = pygame.time.Clock()
 
 regions = []
 
-myvirus = Virus("test", 0.03, 5, 14000, 0.97, 5000) 
+myvirus = Virus("test", 0.20, 30, 14000, 0.60, 5000) 
 
 regions.append(Region("region1", 100, 500, myvirus))
-
 
 timer_event = pygame.USEREVENT + 1
 pygame.time.set_timer(timer_event, 50)
@@ -26,6 +25,6 @@ while not done:
             for myregion in regions:
               myregion.draw()
               myregion.iterate()
+            pygame.display.flip()
 
-        pygame.display.flip()
 
