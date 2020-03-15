@@ -26,11 +26,11 @@ class Individual(object):
     immune = False
     symptomatic = False
 
-    def __init__(self, name):
+    def __init__(self, name, size):
         self.name = str(name)
         self.age  = int(gauss(0, 50) + 50)
-        self.x    = randint(0, 400)
-        self.y    = randint(0, 300)
+        self.x    = randint(0, size)
+        self.y    = randint(0, size)
         self.dx   = random() * 4 - 2
         self.dy   = random() * 4 - 2
 
@@ -53,16 +53,16 @@ class Individual(object):
                                 self.y - self.size / 2,
                                 self.size, self.size))
 
-    def move(self):
+    def move(self, size):
         if self.alive and not self.quarantined:
             self.x = self.x + self.dx
             self.y = self.y + self.dy
 
-            if (self.x > 400) or (self.x < 0):
+            if (self.x > size) or (self.x < 0):
                 self.x = self.x - self.dx * 2
                 self.dx = -self.dx
 
-            if (self.y > 300) or (self.y < 0):
+            if (self.y > size) or (self.y < 0):
                 self.y = self.y - self.dy * 2
                 self.dy = -self.dy
 

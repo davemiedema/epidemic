@@ -1,13 +1,18 @@
 import pygame
 from region import Region
 from virus  import Virus
+import random
+from datetime import datetime
 
 pygame.init()
-screen = pygame.display.set_mode((400,300))
 done = False
 clock = pygame.time.Clock()
 
-myregion = Region("my region", 100, Virus("test", 0.01, 30, 14000, 0.68, 5000))
+regions = []
+
+myvirus = Virus("test", 0.03, 5, 14000, 0.97, 5000) 
+
+regions.append(Region("region1", 100, 500, myvirus))
 
 
 timer_event = pygame.USEREVENT + 1
@@ -18,8 +23,9 @@ while not done:
         if event.type == pygame.QUIT:
             done = True
         elif event.type == timer_event:
-            myregion.draw(screen)
-            myregion.iterate()
+            for myregion in regions:
+              myregion.draw()
+              myregion.iterate()
 
         pygame.display.flip()
 
