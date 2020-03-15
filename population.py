@@ -21,4 +21,16 @@ class Population(object):
       for person in self.individuals:
           person.move()
 
+    def infect(self, virus):
+      """Move a population"""
+      for person in self.individuals:
+          person.infect(self.individuals, virus)
+      
+    def cure(self, virus):
+      """Cure a population"""
+      for person in self.individuals:
+          person.cure(self.individuals, virus)
+
+      
+
 
